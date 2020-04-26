@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 // import net.guides.springboot2.springboot2jpacrudexample.exception.ResourceNotFoundException;
@@ -26,12 +27,16 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 @RequestMapping("/api")
 public class Cont {
-    // @Autowired
-    // private StudentRepo studentRepo;
+    @Autowired
+    private BookRepo bookRepo;
 
-    @GetMapping("/")
-    public String hello() {
-        return "hello world";
+
+
+    @GetMapping(path = "/all")
+    @ResponseBody
+    public Iterable<Book> getAllUsers() {
+        // This returns a JSON or XML with the users
+        return bookRepo.findAll();
     }
 
     // @GetMapping("/students")

@@ -9,7 +9,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "books")
-
 public class Book {
     @Id
     private long id;
@@ -26,6 +25,9 @@ public class Book {
     @Column(name = "price")
     private double price;
 
+    @Column(name = "deleted")
+    private boolean deleted;
+
     public Book() {
 
     }
@@ -35,9 +37,9 @@ public class Book {
         this.author = author;
         this.year = year;
         this.price = price;
+        this.deleted = false;
     }
 
-    
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
         return id;
@@ -46,7 +48,6 @@ public class Book {
     public void setId(long id) {
         this.id = id;
     }
-
 
     public String getName() {
         return this.name;
@@ -78,5 +79,17 @@ public class Book {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public boolean isDeleted() {
+        return this.deleted;
+    }
+
+    public boolean getDeleted() {
+        return this.deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

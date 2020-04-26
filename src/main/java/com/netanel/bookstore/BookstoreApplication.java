@@ -22,7 +22,7 @@ public class BookstoreApplication {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("connecting to " + url);
-			Connection myConn = DriverManager.getConnection(url, user, password);
+			DriverManager.getConnection(url, user, password);
 			System.out.println("success");
 		} catch (Exception exc) {
 			exc.printStackTrace();
