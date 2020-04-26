@@ -4,6 +4,10 @@ target/
 !**/src/main/**
 !**/src/test/**
 
+
+### ENV ###
+application.properties
+
 ### STS ###
 .apt_generated
 .classpath
@@ -29,3 +33,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Misc ###
+playground/
