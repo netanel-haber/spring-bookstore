@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div th:switch="${books}">
+        <h2 th:case="null">No books yet!</h2>
+        <div th:case="*">
+            <h2>Users</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Author</th>
+                        <th>Price</th>
+                        <th>Year</th>
+                        <!-- <th>Email</th> -->
+                        <!-- <th>Edit</th> -->
+                        <!-- <th>Delete</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="book : ${books}">
+                        <td th:text="${book.name}"></td>
+                        <td th:text="${book.author}"></td>
+                        <td th:text="${book.price}"></td>
+                        <td th:text="${book.year}"></td>
+                        <!-- <td th:text="${user.email}"></td> -->
+                        <!-- <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td> -->
+                        <!-- <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div sec:authorize="hasRole('ADMIN')">
+            This content is only shown to administrators.
+        </div>
+    </div>
+    <a th:href="@{/logout}">Sign Out</a>
+</body>
+
+</html>

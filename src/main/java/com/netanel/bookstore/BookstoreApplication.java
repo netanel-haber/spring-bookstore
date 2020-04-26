@@ -1,12 +1,11 @@
 package com.netanel.bookstore;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-
+import org.springframework.context.annotation.Bean;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -29,5 +28,9 @@ public class BookstoreApplication {
 		}
 	}
 
-	
+	@Bean
+	public SpringSecurityDialect securityDialect() {
+		return new SpringSecurityDialect();
+	}
+
 }
