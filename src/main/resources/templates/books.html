@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/css/books.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 </head>
 
 <body>
@@ -21,27 +23,23 @@
                         <th>Author</th>
                         <th>Price</th>
                         <th>Year</th>
-                        <th sec:authorize="hasRole('ADMIN')">
-                            Administration
-                        </th>
-                        <th sec:authorize="hasRole('USER')">
-                            Add To Cart
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="book : ${books}">
+                    <tr class="book" th:each="book : ${books}">
                         <td th:text="${book.id}"></td>
                         <td th:text="${book.name}"></td>
                         <td th:text="${book.author}"></td>
                         <td th:text="${book.price}"></td>
                         <td th:text="${book.year}"></td>
-                        <td sec:authorize="hasRole('ADMIN')">
-                            <a th:href="@{/books/delete/} + ${book.id}" class="deleteBook">Delete</a>
-                            <button>Edit</button>
-                        </td>
-                        <td sec:authorize="hasRole('USER')">
-                            <button>+</button>
+                        <td class="overlay">
+                            <div sec:authorize="hasRole('ADMIN')">
+                                <a th:href="@{/books/delete/} + ${book.id}">🗑️</a>
+                                <a th:href="@{/books/edit/} + ${book.id}">🖊️</a>
+                            </div>
+                            <div sec:authorize="hasRole('USER')">
+                                <button>🛒</button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

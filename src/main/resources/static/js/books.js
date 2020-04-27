@@ -1,8 +1,24 @@
-// const qsa = document.querySelectorAll.bind(document);
-// const qs = document.querySelector.bind(document);
+const qsa = document.querySelectorAll.bind(document);
+const qs = document.querySelector.bind(document);
 
-// const table = qs("#booksTable");
-// const [headerRow, ...rows] = table.rows;
+const table = document.querySelector("#booksTable");
+
+const rows = qsa(".book");
+
+
+
+// table.addEventListener("mouseover",()=>{
+    // console.log("here")
+// })
+// rows.forEach(r => {
+//     r.addEventListener("mouseover", () => {
+//         console.log("hello")
+//         const overlay = document.createElement("span");
+//         overlay.style="position:absolute;left:0;top:0;";
+//         overlay.innerText = "jjjj";
+//         r.appendChild(overlay);
+//     })
+// });
 // const headerCells = Array.from(headerRow.querySelectorAll("th"));
 // const indexOfIdColumn = headerCells.findIndex((th) => th.id === "bookId");
 // const delBookButton = qsa(".deleteBook");

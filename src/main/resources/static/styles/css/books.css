@@ -1,0 +1,19 @@
+.book {
+  position: relative;
+  width: 100%;
+  background-color: blue;
+}
+.book .overlay {
+  position: absolute;
+  top: 50%;
+  opacity: 0.15;
+}
+.book .overlay a {
+  text-decoration: none;
+}
+.book:hover .overlay {
+  pointer-events: unset;
+  opacity: 1;
+}
+
+/*# sourceMappingURL=books.css.map */

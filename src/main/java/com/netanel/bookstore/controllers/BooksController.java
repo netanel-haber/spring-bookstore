@@ -21,8 +21,6 @@ public class BooksController {
     public String deleteBookById(Model model, @PathVariable("id") Long id) {
         System.out.println("here");
         bookRepo.deleteById(id);
-        // model.addAttribute("books", bookRepo.findAll());
-        // System.out.println(model);
         return "redirect:/books";
     }
 

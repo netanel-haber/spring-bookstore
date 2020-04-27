@@ -1,0 +1,17 @@
+.book {
+    position: relative;
+    width: 100%;
+    background-color: blue;
+    .overlay {
+        position: absolute;
+        top: 50%;
+        opacity: 0.15;
+        a {
+            text-decoration: none;
+        }
+    }
+    &:hover .overlay {
+        pointer-events: unset;
+        opacity: 1;
+    }
+}
