@@ -1,7 +1,6 @@
 package com.netanel.bookstore;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -18,7 +17,7 @@ public interface BookRepo extends JpaRepository<Book, Long> {
     @Query("update Book b set b.deleted = true where b.id = :id")
     void deleteById(@Param("id") Long id);
 
-    @Query("select b FROM Book b WHERE b.deleted = false")
-    Page<Book> findAll(Pageable pageable);
+    @Query(value = "SELECT * FROM books WHERE deleted=0", nativeQuery = true)
+    List<Book> findAll();
 
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "/books")
@@ -16,11 +17,13 @@ public class BooksController {
     @Autowired
     private BookRepo bookRepo;
 
-    @DeleteMapping(value = "/{id}/delete")
+    @GetMapping(value = "/delete/{id}")
     public String deleteBookById(Model model, @PathVariable("id") Long id) {
+        System.out.println("here");
         bookRepo.deleteById(id);
-        model.addAttribute("books", bookRepo.findAll());
-        return "books.html";
+        // model.addAttribute("books", bookRepo.findAll());
+        // System.out.println(model);
+        return "redirect:/books";
     }
 
     @GetMapping
