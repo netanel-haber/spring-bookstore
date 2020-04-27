@@ -1,4 +1,4 @@
-package com.netanel.bookstore;
+package com.netanel.bookstore.controllers;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
+
+import com.netanel.bookstore.BookRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,30 +20,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-// import net.guides.springboot2.springboot2jpacrudexample.exception.ResourceNotFoundException;
-// import net.guides.springboot2.springboot2jpacrudexample.model.Employee;
-// import net.guides.springboot2.springboot2jpacrudexample.repository.EmployeeRepository;
+import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 @Controller
-public class Cont {
-    @Autowired
-    private BookRepo bookRepo;
+public class GreeterController {
+    // @Autowired
+    // private BookRepo bookRepo;
 
-    @GetMapping(path = "/")
-    public String books(Model model) {
-        model.addAttribute("books", bookRepo.findAll());
-        return "books.html";
-    }
+    // @GetMapping(path = "/")
+    // public String books() {
+    // return "index.html";
+    // }
 
-    
+
+
     // @GetMapping(path = "/api/all")
     // @ResponseBody
     // public Iterable<Book> getAllUsers() {
-    //     // This returns a JSON or XML with the users
-    //     return ;
+    // // This returns a JSON or XML with the users
+    // return ;
     // }
 
     // @GetMapping("/students")

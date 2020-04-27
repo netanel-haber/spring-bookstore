@@ -12,37 +12,44 @@
     <div th:switch="${books}">
         <h2 th:case="null">No books yet!</h2>
         <div th:case="*">
-            <h2>Users</h2>
-            <table>
+            <h2>Books</h2>
+            <table id="booksTable">
                 <thead>
                     <tr>
+                        <th id="bookId">Id</th>
                         <th>Name</th>
                         <th>Author</th>
                         <th>Price</th>
                         <th>Year</th>
-                        <!-- <th>Email</th> -->
-                        <!-- <th>Edit</th> -->
-                        <!-- <th>Delete</th> -->
+                        <th sec:authorize="hasRole('ADMIN')">
+                            Administration
+                        </th>
+                        <th sec:authorize="hasRole('USER')">
+                            Add To Cart
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="book : ${books}">
+                        <td th:text="${book.id}"></td>
                         <td th:text="${book.name}"></td>
                         <td th:text="${book.author}"></td>
                         <td th:text="${book.price}"></td>
                         <td th:text="${book.year}"></td>
-                        <!-- <td th:text="${user.email}"></td> -->
-                        <!-- <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td> -->
-                        <!-- <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td> -->
+                        <td sec:authorize="hasRole('ADMIN')">
+                            <button class="deleteBook">Delete</button>
+                            <button>Edit</button>
+                        </td>
+                        <td sec:authorize="hasRole('USER')">
+                            <button>+</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div sec:authorize="hasRole('ADMIN')">
-            This content is only shown to administrators.
-        </div>
     </div>
     <a th:href="@{/logout}">Sign Out</a>
+    <script type="text/javascript" th:src="@{/js/books.js}"></script>
 </body>
 
 </html>
