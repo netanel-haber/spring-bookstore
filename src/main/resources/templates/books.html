@@ -6,47 +6,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/styles/css/books.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 </head>
 
 <body>
+    <nav class="navbar navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/">Bookstore</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Sign Out</a>
+            </li>
+        </ul>
+    </nav>
     <div th:switch="${books}">
         <h2 th:case="null">No books yet!</h2>
-        <div th:case="*">
-            <h2>Books</h2>
-            <table id="booksTable">
-                <thead>
-                    <tr>
-                        <th id="bookId">Id</th>
-                        <th>Name</th>
-                        <th>Author</th>
-                        <th>Price</th>
-                        <th>Year</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="book" th:each="book : ${books}">
-                        <td th:text="${book.id}"></td>
-                        <td th:text="${book.name}"></td>
-                        <td th:text="${book.author}"></td>
-                        <td th:text="${book.price}"></td>
-                        <td th:text="${book.year}"></td>
-                        <td class="overlay">
-                            <div sec:authorize="hasRole('ADMIN')">
-                                <a th:href="@{/books/delete/} + ${book.id}">🗑️</a>
-                                <a th:href="@{/books/edit/} + ${book.id}">🖊️</a>
-                            </div>
-                            <div sec:authorize="hasRole('USER')">
-                                <button>🛒</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="container mt-5" th:case="*">
+            <div th:if="${deleteBookMessage}" class="alert alert-success">
+                <span th:text="${deleteBookMessage}">book deletion success message</span>
+            </div>
+            <div class="table-container">
+                <table class="mb-0 table table-bordered table-hover" id="booksTable">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th id="bookId" class="text-center">Id</th>
+                            <th>Name</th>
+                            <th>Author</th>
+                            <th class="text-center">Price</th>
+                            <th class="text-center">Year</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="book" th:each="book : ${books}">
+                            <td th:text="${book.id}" class="text-center"></td>
+                            <td th:text="${book.name}"></td>
+                            <td th:text="${book.author}"></td>
+                            <td class="text-center" th:text="${book.price}"></td>
+                            <td class="text-center" th:text="${book.year}"></td>
+                            <td class="actions d-flex justify-content-center">
+                                <div sec:authorize="hasRole('ADMIN')">
+                                    <a th:href="@{/books/delete/} + ${book.id}">🗑️</a>
+                                    <a th:href="@{/books/edit/} + ${book.id}">🖊️</a>
+                                </div>
+                                <div sec:authorize="hasRole('USER')">
+                                    <button>🛒</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    <a th:href="@{/logout}">Sign Out</a>
     <script type="text/javascript" th:src="@{/js/books.js}"></script>
 </body>
 

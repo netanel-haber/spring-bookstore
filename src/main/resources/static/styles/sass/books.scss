@@ -1,17 +1,20 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #eee;
+}
+
+.table-container {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
 .book {
-    position: relative;
-    width: 100%;
-    background-color: blue;
-    .overlay {
-        position: absolute;
-        top: 50%;
+    .actions {
         opacity: 0.15;
-        a {
-            text-decoration: none;
-        }
+        text-decoration: none;
     }
-    &:hover .overlay {
-        pointer-events: unset;
+    &:hover .actions {
         opacity: 1;
     }
 }
