@@ -92,4 +92,16 @@ public class Book {
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", name='" + getName() + "'" +
+            ", author='" + getAuthor() + "'" +
+            ", year='" + getYear() + "'" +
+            ", price='" + getPrice() + "'" +
+            ", deleted='" + isDeleted() + "'" +
+            "}";
+    }
 }

@@ -1,7 +1,5 @@
 package com.netanel.bookstore.controllers;
-
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +20,7 @@ public class ReflectionController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/endpointdoc", method = RequestMethod.GET)
+    @RequestMapping(value = "admin/endpointdoc", method = RequestMethod.GET)
     public String show(Model model) {
         String result = "";
         final Map<RequestMappingInfo, HandlerMethod> handlerMethods = this.handlerMapping.getHandlerMethods();

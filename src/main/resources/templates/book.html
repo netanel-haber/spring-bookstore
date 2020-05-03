@@ -6,7 +6,42 @@
 </head>
 
 <body>
-    
+    <nav th:replace="fragments/header :: header"></nav>
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-6">
+                <h2 class="display-4 my-3" th:text="${action}">action on book</h2>
+                <form>
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="name">Name</label>
+                            <input th:value="${book!=null}?${book.name}:''" class="form-control" id="name"
+                                placeholder="Enter name">
+                        </div>
+                        <div class="col form-group">
+                            <label for="author">Author Name</label>
+                            <input th:value="${book!=null}?${book.author}:''" class="form-control" id="author"
+                                placeholder="Enter author">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                            <label for="price">Price</label>
+                            <input th:value="${book!=null}?${book.price}:''" type="number" class="form-control"
+                                id="price" placeholder="Enter price"></div>
+                        <div class="col form-group">
+                            <label for="year">Year Of Publish</label>
+                            <input th:value="${book!=null}?${book.year}:''" class="form-control" id="year"
+                                placeholder="Enter year of publish" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <th:block th:include="fragments/bootstrap :: bootstrap"></th:block>
 </body>
 

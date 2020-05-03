@@ -36,8 +36,8 @@
                             <td class="text-center align-middle" th:text="${book.year}"></td>
                             <td class="actions d-flex justify-content-center">
                                 <div sec:authorize="hasRole('ADMIN')">
-                                    <a th:href="@{/books/delete/} + ${book.id}">🗑️</a>
-                                    <a th:href="@{/books/edit/} + ${book.id}">🖊️</a>
+                                    <a th:href="@{admin/books/delete/} + ${book.id}">🗑️</a>
+                                    <a th:href="@{admin/books/edit/} + ${book.id}">🖊️</a>
                                 </div>
                                 <div sec:authorize="hasRole('USER')">
                                     <div class="btn-group-toggle" data-toggle="buttons">
