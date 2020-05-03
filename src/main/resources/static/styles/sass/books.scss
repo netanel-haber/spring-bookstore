@@ -1,8 +1,4 @@
-$tableRowBackground: #eeeeee;
-
 body {
-    padding-top: 40px;
-    padding-bottom: 40px;
     background-color: #eee;
 }
 
@@ -11,7 +7,9 @@ body {
     overflow: hidden;
 }
 
+$rowColor: #eee8f8;
 .book {
+    background-color: $rowColor;
     .actions {
         > * {
             opacity: 0.15;
@@ -24,7 +22,7 @@ body {
         opacity: 1;
     }
     &.active-book {
-        background-color: darken($tableRowBackground, 10%);
+        background-color: darken($rowColor, 10%);
         .actions > * {
             opacity: 1;
         }

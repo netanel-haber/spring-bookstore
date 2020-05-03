@@ -1,21 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <nav th:fragment="header" class="navbar navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="/">Bookstore</a>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/logout}">Sign Out</a>
-            </li>
-        </ul>
-    </nav>
-</body>
-
-</html>
+<nav th:fragment="header" class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Bookstore</a>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/logout}">Sign Out</a>
+        </li>
+    </ul>
+</nav>

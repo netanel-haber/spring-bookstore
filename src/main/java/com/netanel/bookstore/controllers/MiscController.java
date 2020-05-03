@@ -28,16 +28,16 @@ import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 @Controller
-public class GreeterController {
-    // @Autowired
-    // private BookRepo bookRepo;
+public class MiscController {
+    @GetMapping(path = "/")
+    public String index() {
+        return "index.html";
+    }
 
-    // @GetMapping(path = "/")
-    // public String books() {
-    // return "index.html";
-    // }
-
-
+    @GetMapping(path = "/403")
+    public String forbidden() {
+        return "403.html";
+    }
 
     // @GetMapping(path = "/api/all")
     // @ResponseBody

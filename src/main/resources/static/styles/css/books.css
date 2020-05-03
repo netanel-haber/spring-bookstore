@@ -1,6 +1,4 @@
 body {
-  padding-top: 40px;
-  padding-bottom: 40px;
   background-color: #eee;
 }
 
@@ -9,6 +7,9 @@ body {
   overflow: hidden;
 }
 
+.book {
+  background-color: #eee8f8;
+}
 .book .actions > * {
   opacity: 0.15;
 }
@@ -19,7 +20,7 @@ body {
   opacity: 1;
 }
 .book.active-book {
-  background-color: #d5d5d5;
+  background-color: #d1c1ec;
 }
 .book.active-book .actions > * {
   opacity: 1;
