@@ -1,3 +1,5 @@
+$tableRowBackground: #eeeeee;
+
 body {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -11,10 +13,20 @@ body {
 
 .book {
     .actions {
-        opacity: 0.15;
-        text-decoration: none;
+        > * {
+            opacity: 0.15;
+        }
+        a {
+            text-decoration: none;
+        }
     }
-    &:hover .actions {
+    &:hover .actions > * {
         opacity: 1;
+    }
+    &.active-book {
+        background-color: darken($tableRowBackground, 10%);
+        .actions > * {
+            opacity: 1;
+        }
     }
 }

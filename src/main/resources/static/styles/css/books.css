@@ -9,11 +9,19 @@ body {
   overflow: hidden;
 }
 
-.book .actions {
+.book .actions > * {
   opacity: 0.15;
+}
+.book .actions a {
   text-decoration: none;
 }
-.book:hover .actions {
+.book:hover .actions > * {
+  opacity: 1;
+}
+.book.active-book {
+  background-color: #d5d5d5;
+}
+.book.active-book .actions > * {
   opacity: 1;
 }
 

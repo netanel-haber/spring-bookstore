@@ -12,14 +12,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="/">Bookstore</a>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/logout}">Sign Out</a>
-            </li>
-        </ul>
-    </nav>
+    <nav th:replace="fragments/header :: header"></nav>
     <div th:switch="${books}">
         <h2 th:case="null">No books yet!</h2>
         <div class="container mt-5" th:case="*">
@@ -27,10 +20,10 @@
                 <span th:text="${deleteBookMessage}">book deletion success message</span>
             </div>
             <div class="table-container">
-                <table class="mb-0 table table-bordered table-hover" id="booksTable">
+                <table class="mb-0 table table-bordered table-responsive-sm" id="booksTable">
                     <thead class="thead-dark">
                         <tr>
-                            <th id="bookId" class="text-center">Id</th>
+                            <th id="bookId" class="text-center">#</th>
                             <th>Name</th>
                             <th>Author</th>
                             <th class="text-center">Price</th>
@@ -39,28 +32,41 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="book" th:each="book : ${books}">
-                            <td th:text="${book.id}" class="text-center"></td>
-                            <td th:text="${book.name}"></td>
-                            <td th:text="${book.author}"></td>
-                            <td class="text-center" th:text="${book.price}"></td>
-                            <td class="text-center" th:text="${book.year}"></td>
+                        <tr class="book" th:each="book, i : ${books}">
+                            <td th:text="${book.id}" class="align-middle text-center"></td>
+                            <td th:text="${book.name}" class="align-middle"></td>
+                            <td th:text="${book.author}" class="align-middle"></td>
+                            <td class="text-center align-middle" th:text="${book.price}"></td>
+                            <td class="text-center align-middle" th:text="${book.year}"></td>
                             <td class="actions d-flex justify-content-center">
                                 <div sec:authorize="hasRole('ADMIN')">
                                     <a th:href="@{/books/delete/} + ${book.id}">🗑️</a>
                                     <a th:href="@{/books/edit/} + ${book.id}">🖊️</a>
                                 </div>
                                 <div sec:authorize="hasRole('USER')">
-                                    <button>🛒</button>
+                                    <div class="btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-info">
+                                            <input th:id="add-to-cart+${i.index}" type="checkbox" autocomplete="off">🛒
+                                        </label>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <div sec:authorize="hasRole('USER')" class="container mt-3">
+                <div class="row justify-content-center">
+                    <div class="bg-light p-2 rounded col-6 d-flex justify-content-center align-items-center">
+                        <div id="cartTotal"> Total price of books selected: 0 </div>
+                        <button id="resetCart" class="ml-4 btn btn-primary">reset cart</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <script type="text/javascript" th:src="@{/js/books.js}"></script>
+    <th:block th:include="fragments/bootstrap :: bootstrap"></th:block>
+    <script sec:authorize="hasRole('USER')" type="text/javascript" th:src="@{/js/regUserBooks.js}"></script>
 </body>
 
 </html>
