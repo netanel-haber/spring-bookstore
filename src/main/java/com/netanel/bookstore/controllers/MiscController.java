@@ -39,6 +39,11 @@ public class MiscController {
         return "403.html";
     }
 
+    @GetMapping(path = "/login")
+    public String login() {
+        return "login.html";
+    }
+
     // @GetMapping(path = "/api/all")
     // @ResponseBody
     // public Iterable<Book> getAllUsers() {
