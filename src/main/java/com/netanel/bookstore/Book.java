@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name = "books")
 public class Book {
@@ -40,7 +42,7 @@ public class Book {
         this.deleted = false;
     }
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     public long getId() {
         return id;
     }
@@ -95,13 +97,8 @@ public class Book {
 
     @Override
     public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", name='" + getName() + "'" +
-            ", author='" + getAuthor() + "'" +
-            ", year='" + getYear() + "'" +
-            ", price='" + getPrice() + "'" +
-            ", deleted='" + isDeleted() + "'" +
-            "}";
+        return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", author='" + getAuthor() + "'"
+                + ", year='" + getYear() + "'" + ", price='" + getPrice() + "'" + ", deleted='" + isDeleted() + "'"
+                + "}";
     }
 }

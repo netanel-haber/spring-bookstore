@@ -9,25 +9,25 @@
 <body>
     <nav th:replace="fragments/header :: header"></nav>
     <div class="container mt-5 bg-light">
-        <h2 class="display-4 my-5" th:text="${action + ' '}+${action=='Edit'?'book #'+book.id:''}">action on
+        <h2 class="display-4 my-5" th:text="${action}+' book '+${action=='edit'?'#'+book.id:''}">action on
             book</h2>
-        <form id="bookForm">
+        <form id="bookForm" method="post" th:action="@{/admin/books/} + ${action} + '/' + (${action=='edit'}?${book.id}:'') ">
             <div class="form-row">
                 <div class="col-sm mr-3 form-group">
-                    <input th:value="${book!=null}?${book.name}:''" class="form-control" id="name"
+                    <input th:value="${book}?${book.name}:''" class="form-control" name="name"
                         placeholder="Enter name">
                 </div>
                 <div class="col-sm mr-3 form-group">
-                    <input th:value="${book!=null}?${book.author}:''" class="form-control" id="author"
+                    <input th:value="${book}?${book.author}:''" class="form-control" name="author"
                         placeholder="Enter author">
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-sm mr-3 form-group">
-                    <input th:value="${book!=null}?${book.price}:''" type="number" class="form-control" id="price"
+                    <input th:value="${book}?${book.price}:''" class="form-control" name="price"
                         placeholder="Enter price"></div>
                 <div class="col-sm mr-3 form-group">
-                    <input th:value="${book!=null}?${book.year}:''" class="form-control" id="year"
+                    <input th:value="${book}?${book.year}:''" class="form-control" name="year"
                         placeholder="Enter year of publish" autocomplete="off">
                 </div>
             </div>

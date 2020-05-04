@@ -35,27 +35,32 @@
                             <td class="text-center align-middle" th:text="${book.price}"></td>
                             <td class="text-center align-middle" th:text="${book.year}"></td>
                             <td class="actions d-flex justify-content-center">
-                                <div sec:authorize="hasRole('ADMIN')">
+                                <th:block sec:authorize="hasRole('ADMIN')">
                                     <a th:href="@{admin/books/delete/} + ${book.id}">🗑️</a>
                                     <a th:href="@{admin/books/edit/} + ${book.id}">🖊️</a>
-                                </div>
-                                <div sec:authorize="hasRole('USER')">
+                                </th:block>
+                                <th:block sec:authorize="hasRole('USER')">
                                     <div class="btn-group-toggle" data-toggle="buttons">
                                         <label class="btn btn-info">
                                             <input th:id="add-to-cart+${i.index}" type="checkbox" autocomplete="off">🛒
                                         </label>
                                     </div>
-                                </div>
+                                </th:block>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div sec:authorize="hasRole('USER')" class="container mt-3">
+            <div class="container mt-3">
                 <div class="row justify-content-center">
                     <div class="bg-light p-2 rounded col-6 d-flex justify-content-center align-items-center">
-                        <div id="cartTotal"> Total price of books selected: 0 </div>
-                        <button id="resetCart" class="ml-4 btn btn-primary">reset cart</button>
+                        <th:block sec:authorize="hasRole('USER')">
+                            <div id="cartTotal"> Total price of books selected: 0 </div>
+                            <button id="resetCart" class="ml-4 btn btn-primary">reset cart</button>
+                        </th:block>
+                        <th:block sec:authorize="hasRole('ADMIN')">
+                            <a th:href="@{admin/books/add}" class="my-3 btn btn-primary">add book</a>
+                        </th:block>
                     </div>
                 </div>
             </div>

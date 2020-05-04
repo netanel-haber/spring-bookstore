@@ -1,8 +1,18 @@
 <nav th:fragment="header" class="navbar navbar-expand navbar-dark bg-dark">
     <a class="navbar-brand" href="/">Bookstore</a>
     <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                Personal
+            </a>
+            <div class="dropdown-menu">
+                <a class=" dropdown-item" th:href="@{/login}">Sign In</a>
+                <a class="dropdown-item" th:href="@{/logout}">Sign Out</a>
+                <a class="dropdown-item" th:href="@{/logout}">Sign Up</a>
+            </div>
+        </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/logout}">Sign Out</a>
+            <a class="nav-link" th:href="@{/books}">Books</a>
         </li>
     </ul>
 </nav>
