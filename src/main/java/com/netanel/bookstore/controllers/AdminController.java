@@ -1,7 +1,5 @@
 package com.netanel.bookstore.controllers;
 
-import javax.validation.Valid;
-
 import com.netanel.bookstore.Book;
 import com.netanel.bookstore.BookRepo;
 
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -25,7 +22,7 @@ public class AdminController {
     @GetMapping(value = "books/delete/{id}")
     public String deleteBookById(@PathVariable("id") Long id, RedirectAttributes redAttr) {
         bookRepo.deleteById(id);
-        redAttr.addFlashAttribute("deleteBookMessage", String.format("book #%s was deleted.", id));
+        redAttr.addFlashAttribute("message", String.format("book #%s was deleted.", id));
         return "redirect:/books";
     }
 
@@ -40,7 +37,6 @@ public class AdminController {
         bookRepo.save(book);
         return "redirect:/books";
     }
-
 
     @GetMapping(value = "books/edit/{id}")
     public String getEditBookById(@PathVariable("id") Long id, Model model) {

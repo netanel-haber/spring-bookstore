@@ -12,8 +12,8 @@
     <div th:switch="${books}">
         <h2 th:case="null">No books yet!</h2>
         <div class="container mt-5" th:case="*">
-            <div th:if="${deleteBookMessage}" class="alert alert-success">
-                <span th:text="${deleteBookMessage}">book deletion success message</span>
+            <div th:if="${message}" class="alert alert-success">
+                <span th:text="${message}">book operation success message</span>
             </div>
             <div class="table-container">
                 <table class="mb-0 table table-bordered table-responsive-sm" id="booksTable">
