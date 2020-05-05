@@ -1,5 +1,7 @@
 package com.netanel.bookstore.controllers;
-import com.netanel.bookstore.BookRepo;
+
+import com.netanel.bookstore.Repositories.BookRepo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

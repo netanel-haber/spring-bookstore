@@ -16,8 +16,9 @@ public class MiscController {
         return "403.html";
     }
 
-    @GetMapping(path = "/login")
-    public String login() {
-        return "login.html";
+    @GetMapping(path = "/404")
+    public String notFound() {
+        return "404.html";
     }
+
 }

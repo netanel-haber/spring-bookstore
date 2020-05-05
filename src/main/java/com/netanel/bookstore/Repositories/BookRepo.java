@@ -1,7 +1,9 @@
-package com.netanel.bookstore;
+package com.netanel.bookstore.Repositories;
 
 import java.util.List;
 import java.util.Optional;
+
+import com.netanel.bookstore.Entities.Book;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

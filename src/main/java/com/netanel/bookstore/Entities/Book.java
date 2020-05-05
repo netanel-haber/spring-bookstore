@@ -1,4 +1,4 @@
-package com.netanel.bookstore;
+package com.netanel.bookstore.Entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
