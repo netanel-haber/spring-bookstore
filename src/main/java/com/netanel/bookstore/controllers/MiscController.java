@@ -21,4 +21,9 @@ public class MiscController {
         return "404.html";
     }
 
+    @GetMapping(path = "/login")
+    public String login() {
+        return "login.html";
+    }
+
 }

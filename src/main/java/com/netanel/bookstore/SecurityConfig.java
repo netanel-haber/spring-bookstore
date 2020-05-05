@@ -36,11 +36,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 	}
 
-	// @Bean
-    // public PasswordEncoder passwordEncoder(){
-    //     PasswordEncoder encoder = new BCryptPasswordEncoder();
-    //     return encoder;
-    // }
+	@Bean
+    public PasswordEncoder passwordEncoder(){
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        return encoder;
+    }
 
 	@Bean
 	public SpringSecurityDialect securityDialect() {
@@ -51,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	@Override
 	public UserDetailsService userDetailsService() {
+	
 		UserDetails user = User.withDefaultPasswordEncoder().username("user").password("password").roles("USER")
 				.build();
 
